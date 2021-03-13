@@ -51,6 +51,7 @@
     "@types/enzyme": "^3.10.8",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "^26.0.20",
+    "@types/node-sass": "^4.11.1",
     "cypress": "^6.6.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
@@ -58,6 +59,7 @@
     "fetch-mock": "^9.11.0",
     "jest-environment-enzyme": "^7.1.2",
     "jest-enzyme": "^7.1.2",
+    "node-sass": "^5.0.0",
     "ts-jest": "^26.5.3"
   }
 }
