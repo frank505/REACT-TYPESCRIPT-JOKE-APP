@@ -13,6 +13,7 @@ const HomePageButton: React.FunctionComponent<ButtonProps> =
         color={color} 
         variant={variant}
         style={customStyles}
+        data-testid="custom-button"
         >
                 {buttonText}
                 </Button>

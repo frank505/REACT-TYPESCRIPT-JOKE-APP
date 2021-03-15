@@ -1,6 +1,6 @@
 export default interface HeaderProps{
 headerText?:string;
-customStyles?:string;
-variant?:string;
+customStyles?:any;
+variant?:string; 
 className?:string;
 }

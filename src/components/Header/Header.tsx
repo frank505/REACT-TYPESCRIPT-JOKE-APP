@@ -13,6 +13,7 @@ const CustomHeader: React.FunctionComponent<HeaderProps> =
        <Typography className={`general-header-custom-styles ${className}`} 
         variant={variant}
         style={customStyles}
+        data-testid="custom-header-elem"
         >
                 {headerText}
                 </Typography>

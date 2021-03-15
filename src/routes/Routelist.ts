@@ -1,4 +1,4 @@
-import Categories from '../pages/categories';
+import FilterJokes from '../pages/filterjokes';
 import Home from '../pages/home';
 import RandomJokes from '../pages/randomjokes';
 
@@ -20,8 +20,8 @@ const routes: IRoute[] = [
     },
     {
         path: '/filter-jokes',
-        name: 'Categories',
-        component: Categories,
+        name: 'Filter Jokes',
+        component: FilterJokes,
         exact: true
     },
     {
