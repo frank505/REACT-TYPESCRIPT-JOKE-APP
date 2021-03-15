@@ -4,5 +4,5 @@ export default interface CardsProps{
 customStyles?:any;
 className?:string;
 contentElements:JSX.Element|HTMLElement;
-actionElements?:JSX.ELement|HTMLElement;
+actionElements?:JSX.Element|HTMLElement;
 }

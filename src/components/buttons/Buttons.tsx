@@ -4,7 +4,7 @@ import { Button } from '@material-ui/core';
 import ButtonProps from './ButtonPropsInterface'
 import './styles.scss';
 
-const HomePageButton: React.FunctionComponent<ButtonProps> = 
+const CustomButton: React.FunctionComponent<ButtonProps> = 
      ({buttonText,clickEvent,color,variant,customStyles,className}:any) => {
 
     return (
@@ -21,4 +21,4 @@ const HomePageButton: React.FunctionComponent<ButtonProps> =
     );
 }
 
-export default HomePageButton;
+export default CustomButton;

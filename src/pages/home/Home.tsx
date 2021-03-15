@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, withRouter,RouteComponentProps } from 'react-router-dom';
-import HomePageButton from '../../components/Buttons/Buttons';
+import CustomButton from '../../components/Buttons/Buttons';
 import CustomHeader from '../../components/Header/Header';
 import './styles.scss';
 import {useHistory} from 'react-router-dom';
@@ -24,7 +24,7 @@ const Home: React.FunctionComponent  = () => {
              className="space-elements"     
             />
           
-            <HomePageButton 
+            <CustomButton
             color="primary" 
             buttonText="Continue" 
             clickEvent={goToCategoriesPage}

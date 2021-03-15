@@ -2,6 +2,8 @@ import React from 'react'
 import './styles.scss';
 import FilterCategories from './FilterCategories'
 import Languages from './Languages';
+import FilterTypes from './FilterTypes';
+import FilterFlags from './FilterFlags';
 
 
 const FilterForm:React.FunctionComponent = () =>
@@ -17,6 +19,12 @@ const FilterForm:React.FunctionComponent = () =>
     <div>
       <Languages />
     </div> 
+    <div>
+      <FilterTypes/>
+    </div>
+    <div>
+      <FilterFlags/>
+    </div>
   
     </>
     );
