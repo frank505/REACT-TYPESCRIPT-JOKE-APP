@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, withRouter,RouteComponentProps } from 'react-router-dom';
 import HomePageButton from '../../components/Buttons/Buttons';
 import CustomHeader from '../../components/Header/Header';
-import './Home.scss';
+import './styles.scss';
 import {useHistory} from 'react-router-dom';
 
 

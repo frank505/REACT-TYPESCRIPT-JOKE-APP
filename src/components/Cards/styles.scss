@@ -1,0 +1,5 @@
+@import '../../_base';
+
+.custom-card-styles{
+    @extend %center-elem;
+}
