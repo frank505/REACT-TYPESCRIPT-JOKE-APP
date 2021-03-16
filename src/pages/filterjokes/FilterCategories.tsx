@@ -9,7 +9,14 @@ FormLabel,
 Checkbox
 } from '@material-ui/core';
 
- const FilterCategories:React.FunctionComponent = () => 
+interface FilterCategoriesProps{
+categories:any;
+
+}
+
+
+ const FilterCategories:React.FunctionComponent<FilterCategoriesProps> = 
+ ({categories}:FilterCategoriesProps) => 
 {
    
     const [value, setValue] = React.useState<string>('Any');
@@ -34,11 +41,15 @@ Checkbox
       </div>
       {
           value!='Any'?
-          <div>
-          <FormControlLabel control={<Checkbox name="checkedA" />} label="Category A" />
-          <FormControlLabel control={<Checkbox name="checkedB" />} label="Category B" />
-          <FormControlLabel control={<Checkbox name="checkedC" />} label="Category C" />
-          </div>
+          categories=='' || categories == null?
+          null
+          :
+          categories.categories.map((data:any,index:number|string)=>(
+            <FormControlLabel
+            key={index}
+            control={<Checkbox name={data} />} label={data} />
+          ))
+         
           :
           null
       }

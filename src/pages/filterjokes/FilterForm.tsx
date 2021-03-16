@@ -6,24 +6,33 @@ import FilterTypes from './FilterTypes';
 import FilterFlags from './FilterFlags';
 
 
-const FilterForm:React.FunctionComponent = () =>
-{
+interface FilterFormProps {
+  categories:any;
+  flags:any;
+}
 
+
+const FilterForm:React.FunctionComponent<FilterFormProps> = (
+  {
+    categories,flags
+  }:FilterFormProps) =>
+{
+ 
     
 
     return(
     <>
     <div>
-    <FilterCategories/>
+    <FilterCategories categories={categories}/>
     </div> 
-    <div>
+    {/* <div>
       <Languages />
-    </div> 
+    </div>  */}
     <div>
       <FilterTypes/>
     </div>
     <div>
-      <FilterFlags/>
+      <FilterFlags flags={flags}/>
     </div>
   
     </>
