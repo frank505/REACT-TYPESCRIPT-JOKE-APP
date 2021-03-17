@@ -21,8 +21,8 @@ const defaultProps: FilterCategoriesProps=
         category:'Any',
         selectedCategory:[],
         language:'',
-        jokeType:'',
-        flags:''
+        jokeType:[],
+        flags:[]
     },
     setFilterValues:filterFunc
  }; 
@@ -74,6 +74,10 @@ describe("<FilterCategories />", () => {
 
             allUsers.forEach((element:any,index:any)=>{
               fireEvent.click(element);
+              /**
+               * react material ui simply changes the class when checked as they use svg over 
+               * default checked values
+               */
               expect(element.classList.contains('Mui-checked')).toBe(true);
             });
 

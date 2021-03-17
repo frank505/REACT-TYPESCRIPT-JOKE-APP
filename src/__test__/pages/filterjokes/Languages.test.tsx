@@ -26,10 +26,13 @@ describe("<FilterFlags />", () => {
         renderLanguage();  
        });
 
- test("root element exist",async()=>
+ test("select option works",async()=>
  {
     const {findByTestId} = renderLanguage();  
-    await findByTestId("filter-language-test-root-elem");
+    let selectOptionId:HTMLElement = await findByTestId('select-data-test-id');
+   let optionData:any = selectOptionId.querySelector('input');
+    expect(optionData.value).toEqual("");
+    fireEvent.change(optionData);
  })
  
 

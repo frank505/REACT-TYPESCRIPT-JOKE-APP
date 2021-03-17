@@ -15,7 +15,7 @@ const defaultProps: ButtonProps= {
   customStyles : {}, 
   className:""
 
-};
+}; 
 
 function renderCustomButton(props: Partial<ButtonProps> = {}) {
   

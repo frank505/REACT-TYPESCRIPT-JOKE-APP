@@ -19,8 +19,8 @@ const FilterJokes: React.FunctionComponent  = () => {
    category:'Any',
    selectedCategory:[],
    language:'',
-   jokeType:'',
-   flags:''
+   jokeType:[],
+   flags:[]
   });
 
   useEffect(() => {

@@ -35,7 +35,7 @@ const FilterForm:React.FunctionComponent<FilterFormProps> = (
       setFilterValues={setFilterValues}/>
     </div> 
     <div>
-      <FilterTypes   /> 
+      <FilterTypes filterValues={filterValues} setFilterValues={setFilterValues}  /> 
     </div>
     <div>
       <FilterFlags flags={flags}  filterValues={filterValues} 

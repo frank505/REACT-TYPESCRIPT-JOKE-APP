@@ -14,7 +14,14 @@ function renderFilterFlags(props: Partial<FilterFlagsProps> = {}) {
    flags:{
        flags: parseJson.flags,
    },
-   filterValues:{},
+    filterValues:{
+        category:'Any',
+        selectedCategory:[],
+        language:'',
+        jokeType:[],
+        flags:[]  
+        
+    },
    setFilterValues: jest.fn()
   };
   return render(<FilterFlags {...defaultProps} {...props} />);
@@ -27,11 +34,21 @@ describe("<FilterFlags />", () => {
        });
 
        
-    test("should check if root component exist", async () =>
-    {
-        const {findByTestId} = renderFilterFlags();  
-        await findByTestId("filter-flag-test-root-component");
-    })
+       test("checkbox is checked",async() =>
+       {
+         const {getAllByTestId} = renderFilterFlags();
+         let allUsers = await getAllByTestId("filter-flags-checkbox");
+   
+         allUsers.forEach((element:any,index:any)=>{
+           expect(element.classList.contains('Mui-checked')).toBe(false);
+           fireEvent.click(element);
+           /**
+            * react material ui simply changes the class when checked as they use svg over 
+            * default checked values
+            */     
+           expect(element.classList.contains('Mui-checked')).toBe(true);
+         });
+       })
  
 
    

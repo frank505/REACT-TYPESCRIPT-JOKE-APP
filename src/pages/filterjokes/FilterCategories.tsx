@@ -34,6 +34,7 @@ import FilterCategoriesProps from '../../interfaces/pages/filterjokes/FilterCate
     {
 
       let arrValues:any = filterValues?.selectedCategory;
+     
       let newValue = event.target.value;
       /**
        * if checkbox is checked and category name doesnt exist in the array 
@@ -84,7 +85,7 @@ import FilterCategoriesProps from '../../interfaces/pages/filterjokes/FilterCate
             <FormControlLabel
             key={index}
             control={<Checkbox name={data}
-            data-testid="check-user"
+            data-testid="check-user" 
             onChange={captureCheckBoxValue}
             value={data}
             />} label={data} />
