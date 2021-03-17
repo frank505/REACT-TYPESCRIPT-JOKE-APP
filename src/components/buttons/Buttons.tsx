@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
 import { Button } from '@material-ui/core';
-import ButtonProps from './ButtonPropsInterface'
+import ButtonProps from '../../interfaces/components/Buttons/ButtonPropsInterface'
 import './styles.scss';
+
 
 const CustomButton: React.FunctionComponent<ButtonProps> = 
      ({buttonText,clickEvent,color,variant,customStyles,className}:any) => {
@@ -13,6 +14,7 @@ const CustomButton: React.FunctionComponent<ButtonProps> =
         color={color} 
         variant={variant}
         style={customStyles}
+        
         data-testid="custom-button"
         >
                 {buttonText}

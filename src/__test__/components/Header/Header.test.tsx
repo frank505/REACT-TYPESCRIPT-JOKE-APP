@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
- import HeaderProps from '../../../components/Header/HeaderPropsInterface'
+ import HeaderProps from '../../../interfaces/components/Header/HeaderPropsInterface'
 import CustomHeader from '../../../components/Header/Header'
 
 

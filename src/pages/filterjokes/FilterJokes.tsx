@@ -6,30 +6,40 @@ import CudtomButton from '../../components/Buttons/Buttons'
 import './styles.scss'
 import FilterForm  from './FilterForm';
 import CustomButton from '../../components/Buttons/Buttons';
-import {getCategoriesService, getFlagsService} from '../../services/jokes/JokesService'
+import {getCategoriesService, getFlagsService,getLanguagesServices} 
+from '../../services/jokes/JokesService'
 
 const FilterJokes: React.FunctionComponent  = () => {
 
   const [categories,setCategories] = useState<string|object>('');
   const [flags,setFlags] = useState<any>('');
+  const [language,setLanguage] = useState<any>('');
+
+  const [fiterValues,setFilterValues] = useState<any>({
+   category:'Any',
+   language:'',
+   jokeType:'',
+   flags:''
+  });
 
   useEffect(() => {
 
   getCategories();
   getFlags();
-
+  getLanguages();
+  
     return () => {
       
     };
   }, [])
 
 
-  const getCategories = ():any =>
+  const getCategories = ():void =>
   {
     getCategoriesService().then((data:any)=>
     {
         console.log(data);
- 
+  
      if(data.error==false)
      {
        setCategories(data); 
@@ -38,7 +48,7 @@ const FilterJokes: React.FunctionComponent  = () => {
     })
   }
 
-  const getFlags = ():any =>
+  const getFlags = ():void =>
   {
     getFlagsService().then((data:any)=>
     {
@@ -47,6 +57,16 @@ const FilterJokes: React.FunctionComponent  = () => {
          setFlags(data);
        }
     })
+  }
+
+  const getLanguages = ():void =>
+  {
+    console.log('hello world');
+    getLanguagesServices().then((data:any)=>
+    {
+      setLanguage(data);
+      
+    });
   }
 
 
@@ -74,8 +94,9 @@ const FilterJokes: React.FunctionComponent  = () => {
                  <FilterForm  
                  categories={categories} 
                  flags={flags}
+                 language={language}
                  />
-                
+                  
                  <CustomButton 
                 color="primary" 
                 buttonText="Submit" 

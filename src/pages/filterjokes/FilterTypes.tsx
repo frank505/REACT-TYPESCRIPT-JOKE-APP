@@ -17,14 +17,17 @@ const FilterTypes:React.FunctionComponent = () =>
 
     return(
     <>
-     
+     <div
+     data-testid="filter-types-element"
+     >
      <FormControl component="fieldset"
      className="custom-radio-styles"
      >
-      <FormLabel component="legend">Select at least one joke type</FormLabel>
+      <FormLabel component="legend" >Select at least one joke type</FormLabel>
   <FormControlLabel control={<Checkbox name="Single" />} label="Single" />
    <FormControlLabel control={<Checkbox name="Two Part" />} label="Two Part" />
       </FormControl>
+      </div>
     </>
     );
 }

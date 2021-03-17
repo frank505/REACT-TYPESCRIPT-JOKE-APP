@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
 import { Card,CardContent,CardActions } from '@material-ui/core';
-import CardsProps from './CardsPropInterface'
+import CardsProps from '../../interfaces/components/Cards/CardsPropInterface'
 import './styles.scss';
 
 const CustomCards: React.FunctionComponent<CardsProps> = 

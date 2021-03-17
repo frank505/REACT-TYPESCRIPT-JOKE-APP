@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, RouteComponentProps } from 'react-router-dom';
-import routes from './Routelist'
+import routes from '../interfaces/routes/Routelist';
 
 
 const Routes = () => {

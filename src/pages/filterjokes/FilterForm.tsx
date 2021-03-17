@@ -4,32 +4,33 @@ import FilterCategories from './FilterCategories'
 import Languages from './Languages';
 import FilterTypes from './FilterTypes';
 import FilterFlags from './FilterFlags';
+import FilterFormProps from '../../interfaces/pages/filterjokes/FilterFormProps';
 
 
-interface FilterFormProps {
-  categories:any;
-  flags:any;
-}
+
 
 
 const FilterForm:React.FunctionComponent<FilterFormProps> = (
   {
-    categories,flags
+    categories,
+    flags,
+    language
   }:FilterFormProps) =>
 {
  
-    
+  console.log(flags);
+    console.log(language);
 
     return(
     <>
     <div>
     <FilterCategories categories={categories}/>
     </div> 
-    {/* <div>
-      <Languages />
-    </div>  */}
     <div>
-      <FilterTypes/>
+      <Languages language={language}/>
+    </div> 
+    <div>
+      <FilterTypes /> 
     </div>
     <div>
       <FilterFlags flags={flags}/>

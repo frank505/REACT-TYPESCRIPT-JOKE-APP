@@ -31,7 +31,7 @@ export const getLanguagesServices = ():any =>
   return getData(addedUrl).then((data:any)=>
   {
    return data;
-  }).catch((error)=>{
+  }).catch((error:any)=>{
     return error;
   });
 

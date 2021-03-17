@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import 
 {
 Radio,
@@ -8,18 +8,19 @@ FormControl,
 FormLabel,
 Checkbox
 } from '@material-ui/core';
+import FilterCategoriesProps from '../../interfaces/pages/filterjokes/FilterCategoriesProps'
 
-interface FilterCategoriesProps{
-categories:any;
 
-}
 
 
  const FilterCategories:React.FunctionComponent<FilterCategoriesProps> = 
- ({categories}:FilterCategoriesProps) => 
+ (
+   {
+     categories, 
+    }:FilterCategoriesProps) => 
 {
    
-    const [value, setValue] = React.useState<string>('Any');
+    const [value, setValue] = useState<string>('Any');
 
     const handleChange = (event:React.ChangeEvent<HTMLInputElement>):any => 
     {
@@ -27,15 +28,21 @@ categories:any;
     };
 
     return (
-        <div>
+        <div>  
          <div>
          <FormControl component="fieldset">
       <FormLabel component="legend">Select A Category</FormLabel>
       <RadioGroup aria-label="gender"
-      className="custom-radio-styles"
-      name="gender1" value={value} onChange={handleChange}>
-        <FormControlLabel value="Any" control={<Radio />} label="Any" />
-        <FormControlLabel value="Custom" control={<Radio />} label="Custom" />
+      className="custom-radio-styles custom-radio-test"
+      name="gender1" value={value}
+      data-testid="radio-group-controllers"
+      onChange={handleChange}>
+        <FormControlLabel value="Any"
+        data-testid="show-any-categories"
+        control={<Radio />} label="Any" />
+        <FormControlLabel value="Custom" control={<Radio />} 
+        data-testid="show-custom-categories"
+        label="Custom" />
       </RadioGroup>
     </FormControl>
       </div>

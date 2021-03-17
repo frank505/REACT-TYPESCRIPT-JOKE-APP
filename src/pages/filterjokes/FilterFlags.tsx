@@ -8,19 +8,17 @@ FormLabel,
 Checkbox
 } from '@material-ui/core';
 import './styles.scss';
+import FilterFlagsProps from '../../interfaces/pages/filterjokes/FilterFlagsProps'
 
-interface FilterFlagsProps{
-    flags:any;
-}
 
 const FilterFlags:React.FunctionComponent<FilterFlagsProps> = 
 ({flags}:FilterFlagsProps) =>
 {
 
-    
+   
 
     return(
-    <>
+    <div  data-testid="filter-flag-test-root-component">
      
      <FormControl component="fieldset"
      className="custom-radio-styles"
@@ -32,11 +30,11 @@ const FilterFlags:React.FunctionComponent<FilterFlagsProps> =
       null
       :
       flags.flags.map((data:any,index:any)=>(
-        <FormControlLabel key={index} control={<Checkbox name={data} />} label={data} />
+      <FormControlLabel key={index} control={<Checkbox name={data} />} label={data} />
       ))
         }
     </FormControl>
-    </>
+    </div>
     );
 }
 

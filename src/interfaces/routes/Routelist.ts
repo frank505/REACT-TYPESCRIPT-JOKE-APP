@@ -1,6 +1,6 @@
-import FilterJokes from '../pages/filterjokes';
-import Home from '../pages/home';
-import RandomJokes from '../pages/randomjokes';
+import FilterJokes from '../../pages/filterjokes';
+import Home from '../../pages/home';
+import RandomJokes from '../../pages/randomjokes';
 
 
 interface IRoute {

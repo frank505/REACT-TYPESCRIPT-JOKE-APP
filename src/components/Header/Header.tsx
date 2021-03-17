@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
 import { Typography } from '@material-ui/core';
-import HeaderProps from './HeaderPropsInterface'
+import HeaderProps from '../../interfaces/components/Header/HeaderPropsInterface'
 import './Header.scss';
 
 
