@@ -17,6 +17,8 @@ import FilterCategoriesProps from '../../interfaces/pages/filterjokes/FilterCate
  (
    {
      categories, 
+     filterValues,
+     setFilterValues
     }:FilterCategoriesProps) => 
 {
    
@@ -25,7 +27,35 @@ import FilterCategoriesProps from '../../interfaces/pages/filterjokes/FilterCate
     const handleChange = (event:React.ChangeEvent<HTMLInputElement>):any => 
     {
       setValue(event.target.value);
+      setFilterValues({ ...filterValues, category:event.target.value, selectedCategory:[]});
     };
+
+    const captureCheckBoxValue = (event:React.ChangeEvent<HTMLInputElement>):any =>
+    {
+
+      let arrValues:any = filterValues?.selectedCategory;
+      let newValue = event.target.value;
+      /**
+       * if checkbox is checked and category name doesnt exist in the array 
+       */
+      if(event.target.checked && !arrValues.includes(newValue))
+      {
+          arrValues.push(newValue);
+         setFilterValues({...filterValues,selectedCategory:arrValues});
+
+      }
+      /**
+       * else checkbox is not checked or unchecked and category name  exist in array
+       */
+      else if(!event.target.checked && arrValues.includes(newValue))
+      {
+       let newArray =  arrValues.filter((arrayItem:any)  => arrayItem !== newValue);
+       setFilterValues({...filterValues,selectedCategory:newArray});
+      }
+
+      }
+     
+
 
     return (
         <div>  
@@ -38,7 +68,6 @@ import FilterCategoriesProps from '../../interfaces/pages/filterjokes/FilterCate
       data-testid="radio-group-controllers"
       onChange={handleChange}>
         <FormControlLabel value="Any"
-        data-testid="show-any-categories"
         control={<Radio />} label="Any" />
         <FormControlLabel value="Custom" control={<Radio />} 
         data-testid="show-custom-categories"
@@ -50,11 +79,15 @@ import FilterCategoriesProps from '../../interfaces/pages/filterjokes/FilterCate
           value!='Any'?
           categories=='' || categories == null?
           null
-          :
+          : 
           categories.categories.map((data:any,index:number|string)=>(
             <FormControlLabel
             key={index}
-            control={<Checkbox name={data} />} label={data} />
+            control={<Checkbox name={data}
+            data-testid="check-user"
+            onChange={captureCheckBoxValue}
+            value={data}
+            />} label={data} />
           ))
          
           :

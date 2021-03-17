@@ -15,8 +15,9 @@ const FilterJokes: React.FunctionComponent  = () => {
   const [flags,setFlags] = useState<any>('');
   const [language,setLanguage] = useState<any>('');
 
-  const [fiterValues,setFilterValues] = useState<any>({
+  const [filterValues,setFilterValues] = useState<any>({
    category:'Any',
+   selectedCategory:[],
    language:'',
    jokeType:'',
    flags:''
@@ -32,6 +33,9 @@ const FilterJokes: React.FunctionComponent  = () => {
       
     };
   }, [])
+
+
+  
 
 
   const getCategories = ():void =>
@@ -77,7 +81,7 @@ const FilterJokes: React.FunctionComponent  = () => {
 
     const submitQueryData = () =>
     {
-
+      console.log(filterValues);
     }
 
     return (
@@ -93,6 +97,8 @@ const FilterJokes: React.FunctionComponent  = () => {
                   />
                  <FilterForm  
                  categories={categories} 
+                 filterValues={filterValues}
+                 setFilterValues={setFilterValues}
                  flags={flags}
                  language={language}
                  />

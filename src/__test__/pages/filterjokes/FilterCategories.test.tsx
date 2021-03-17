@@ -3,19 +3,28 @@ import { render, fireEvent,screen, getByLabelText, getByText } from "@testing-li
 import FilterCategoriesProps from "../../../interfaces/pages/filterjokes/FilterCategoriesProps";
 import FilterCategories from "../../../pages/filterjokes/FilterCategories";
 import * as filterCategories from '../../../mocks/pages/filterjokes/FilterCategories.json';
-import {shallow} from 'enzyme';
+
 
 
 
 
 const parseJson:any = filterCategories;
 
+const filterFunc = jest.fn();
+
 const defaultProps: FilterCategoriesProps= 
   {
     categories:{
         categories: parseJson.categories,
     },
-
+    filterValues:{
+        category:'Any',
+        selectedCategory:[],
+        language:'',
+        jokeType:'',
+        flags:''
+    },
+    setFilterValues:filterFunc
  }; 
  
  
@@ -26,10 +35,6 @@ function renderFilterCategories(props:Partial<FilterCategoriesProps>={})
     return render(<FilterCategories {...defaultProps} {...props} />);
 }
 
-function shallowRenderFilterCategories(props:Partial<FilterCategoriesProps>={})
-{
-    return shallow(<FilterCategories {...defaultProps} {...props}/>);
-}
 
 describe("<FilterCategories />", () => {
 
@@ -39,16 +44,43 @@ describe("<FilterCategories />", () => {
     
  test("radio group has been changed", async()=>{
 
-        const wrapper = shallowRenderFilterCategories();
-       expect(wrapper.find('[data-testid="radio-group-controllers"]').prop('value')).toBe('Any');
-      
-       wrapper.find('[data-testid="radio-group-controllers"]').simulate('change', {
-        target: {
-            value: 'Custom'
+    const {getAllByTestId} = renderFilterCategories();
+    let customCategories = await getAllByTestId('show-custom-categories');
+    customCategories.forEach((elem:any,index:number)=>{
+        let currInputElem = elem.querySelector('[aria-disabled="false"]');
+        if(!currInputElem.classList.contains('Mui-checked'))
+        {
+          fireEvent.click(currInputElem);
+          expect(currInputElem.classList.contains('Mui-checked')).toBe(true);
         }
-    })
-       expect(wrapper.find('[data-testid="radio-group-controllers"]').prop('value')).toBe('Custom');
+    });
+ });
+
+
+ test('check box is checked',async()=>{
   
+    const {getAllByTestId} = renderFilterCategories();
+    let customCategories = await getAllByTestId('show-custom-categories');
+    
+     customCategories.forEach((elem:any,index:number)=>{
+      let currInputElem = elem.querySelector('[aria-disabled="false"]');
+      if(currInputElem.classList.contains('Mui-checked'))
+      {
+          let radioBtnValue = elem.querySelector('input').value;
+          if(radioBtnValue=='Custom')
+          {
+            
+            let allUsers = getAllByTestId("check-user");
+
+            allUsers.forEach((element:any,index:any)=>{
+              fireEvent.click(element);
+              expect(element.classList.contains('Mui-checked')).toBe(true);
+            });
+
+          }
+      }
+        
+     });
  });
  
 

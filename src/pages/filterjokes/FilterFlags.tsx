@@ -12,7 +12,12 @@ import FilterFlagsProps from '../../interfaces/pages/filterjokes/FilterFlagsProp
 
 
 const FilterFlags:React.FunctionComponent<FilterFlagsProps> = 
-({flags}:FilterFlagsProps) =>
+({
+    flags,
+    filterValues,
+    setFilterValues
+}
+    :FilterFlagsProps) =>
 {
 
    

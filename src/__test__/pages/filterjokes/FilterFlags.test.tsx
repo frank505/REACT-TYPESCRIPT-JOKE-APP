@@ -12,8 +12,10 @@ const parseJson:any = flags;
 function renderFilterFlags(props: Partial<FilterFlagsProps> = {}) {
   const defaultProps: FilterFlagsProps= {
    flags:{
-       flags: parseJson.flags
-   }
+       flags: parseJson.flags,
+   },
+   filterValues:{},
+   setFilterValues: jest.fn()
   };
   return render(<FilterFlags {...defaultProps} {...props} />);
 }

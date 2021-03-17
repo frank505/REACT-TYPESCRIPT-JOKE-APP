@@ -18,6 +18,10 @@ function renderFilterForm(props: Partial<FilterFormProps> = {}) {
     },
     language:{
      language:languages
+    },
+    filterValues:{},
+    setFilterValues(){
+      
     }
    }
    return render(<FilterForm {...defaultProps} {...props} />);

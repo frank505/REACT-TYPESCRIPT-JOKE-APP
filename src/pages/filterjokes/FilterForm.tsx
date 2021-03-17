@@ -14,7 +14,9 @@ const FilterForm:React.FunctionComponent<FilterFormProps> = (
   {
     categories,
     flags,
-    language
+    language,
+    filterValues,
+    setFilterValues
   }:FilterFormProps) =>
 {
  
@@ -24,16 +26,20 @@ const FilterForm:React.FunctionComponent<FilterFormProps> = (
     return(
     <>
     <div>
-    <FilterCategories categories={categories}/>
+    <FilterCategories categories={categories} filterValues={filterValues}
+    setFilterValues={setFilterValues}
+    />
     </div> 
     <div>
-      <Languages language={language}/>
+      <Languages language={language}  filterValues={filterValues} 
+      setFilterValues={setFilterValues}/>
     </div> 
     <div>
-      <FilterTypes /> 
+      <FilterTypes   /> 
     </div>
     <div>
-      <FilterFlags flags={flags}/>
+      <FilterFlags flags={flags}  filterValues={filterValues} 
+      setFilterValues={setFilterValues}/>
     </div>
   
     </>

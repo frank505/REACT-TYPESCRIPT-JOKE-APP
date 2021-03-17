@@ -24,7 +24,9 @@ const useStyles = makeStyles((theme: Theme) =>
 
 
 const Languages: React.FunctionComponent<LanguageProps> = ({
-  language
+  language,
+  filterValues,
+  setFilterValues
 }:LanguageProps) => {
   const classes = useStyles();
   const [age, setAge] = useState<string | number>('');

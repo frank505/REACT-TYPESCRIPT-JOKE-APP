@@ -6,13 +6,15 @@ import LanguageProps from "../../../interfaces/pages/filterjokes/LanguageProps";
 
 
 
-
+const filterFunc = jest.fn();
 
 function renderLanguage(props: Partial<LanguageProps> = {}) {
   const defaultProps: LanguageProps= {
    language:{
        language: language
-   }
+   },
+   filterValues:{},
+   setFilterValues:filterFunc
   };
   return render(<Languages {...defaultProps} {...props} />);
 }
