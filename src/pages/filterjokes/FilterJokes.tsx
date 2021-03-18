@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, withRouter,RouteComponentProps } from 'react-router-dom';
+import { Link, withRouter,RouteComponentProps, useHistory } from 'react-router-dom';
 import CustomCards from '../../components/Cards/CustomCard'
 import CustomHeader from '../../components/Header/Header';
 import CudtomButton from '../../components/Buttons/Buttons'
@@ -18,7 +18,7 @@ const FilterJokes: React.FunctionComponent  = () =>
   const [categories,setCategories] = useState<string|object>('');
   const [flags,setFlags] = useState<any>('');
   const [language,setLanguage] = useState<any>('');
-
+  const history = useHistory();
   const [filterValues,setFilterValues] = useState<any>({
    category:'Any',
    selectedCategory:[],
@@ -92,16 +92,87 @@ const FilterJokes: React.FunctionComponent  = () =>
      return errors;
   }
 
-    const clearFilterForm = () =>
-    {
-
-    }
+    
+   
 
     const submitQueryData = () =>
     {
       let err = validation();
+      if(noErrorsCheck(err)==false)
+      {
+       return alertNotification('Form Validation','One or more fields have not been entered','error');
+      }
+       console.log(arrangeUrl(filterValues));
+    }
+
+   const constructUrlFromLoop = (data:any,lengthElem:number):any =>
+   {
+    let stringAppendUrl = '';
+    data.forEach((data:string,index:number):any=>
+    {
+      if(lengthElem==(index + 1)){
+        stringAppendUrl += data;
+      }else{
+       stringAppendUrl += data+","; 
+      }
+     
+    });
+
+    return stringAppendUrl;
+   }
+
+    const arrangeUrl = (data:any):string =>
+    {
+      let stringAppendUrl:string = '';
+
+     /**arrange categories  url*/
+     if(data.category=='Any')
+     {
+       stringAppendUrl+='Any';
+     }else
+     {
+       let lengthElem = data.selectedCategory.length;
+       stringAppendUrl += constructUrlFromLoop(data.selectedCategory,lengthElem);
+     }
+   /**arrange language url */
+    if(data.language!='en')
+    {
+      stringAppendUrl+='?lang='+data.language;
+    }
+   
+    /**arrange flags url */
+    let flagsLength = data.flags.length;
+    if(flagsLength > 0)
+    {
+      stringAppendUrl+= data.language =='en' ? '?blacklistFlags=':'&blacklistFlags=';
+      stringAppendUrl+= constructUrlFromLoop(data.flags,flagsLength);
+    }
+ /**array joketype url */
+   stringAppendUrl += data.language=='en' && flagsLength==0? '?type=':'&type=';
+   let jokeTypeLength = data.jokeType.length;
+    if(jokeTypeLength > 0)
+    {
+      stringAppendUrl += constructUrlFromLoop(data.jokeType,jokeTypeLength);
+    } 
+     
+  return stringAppendUrl;
+
+    }
+
+
+    const noErrorsCheck = (dataObject:any):boolean =>
+    {
+      for (var objects in dataObject) {
+        console.log(objects);
+      
+        if (dataObject[objects] != '') 
+        {
+          return false;
+        }
       
     }
+    return true;
+  }
 
     return (
         <div data-testid="filter-jokes-test-id">
@@ -136,13 +207,7 @@ const FilterJokes: React.FunctionComponent  = () =>
                 variant="contained"
                 className="pad-btn-jokes-elem"
                 />
-                <CustomButton 
-                color="secondary" 
-                buttonText="Clear" 
-                clickEvent={clearFilterForm}
-                variant="contained"
-                className="pad-btn-jokes-elem"
-                />
+               
            
 
           

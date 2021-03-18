@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect,useReducer} from 'react'
 import './styles.scss';
 import 
 {
@@ -19,6 +19,9 @@ const FilterTypes:React.FunctionComponent<FilterTypesProps> = (
                                    }:FilterTypesProps) =>
 {
 
+   
+
+   
     
     const captureCheckBoxValue = (event:React.ChangeEvent<HTMLInputElement>):any =>
     {
@@ -53,7 +56,7 @@ const FilterTypes:React.FunctionComponent<FilterTypesProps> = (
      <FormControl component="fieldset"
      className="custom-radio-styles"
      >
-      <FormLabel component="legend" >Select at least one joke type</FormLabel>
+      <FormLabel component="legend" >Select at least one joke type(required)</FormLabel>
   <FormControlLabel control={<Checkbox name="Single"  
                onChange={captureCheckBoxValue} 
                data-testid="filter-types-checkbox"
@@ -65,6 +68,11 @@ const FilterTypes:React.FunctionComponent<FilterTypesProps> = (
         value="twopart"
    />} label="Two Part" />
       </FormControl>
+
+      <div className="validator-error">
+        {formValidatorProps != '' ? formValidatorProps.jokeType:''}   
+       </div> 
+
       </div>
     </>
     );

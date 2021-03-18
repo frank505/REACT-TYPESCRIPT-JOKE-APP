@@ -9,6 +9,7 @@ Checkbox
 } from '@material-ui/core';
 import './styles.scss';
 import FilterFlagsProps from '../../interfaces/pages/filterjokes/FilterFlagsProps'
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 
 const FilterFlags:React.FunctionComponent<FilterFlagsProps> = 
@@ -55,8 +56,9 @@ const FilterFlags:React.FunctionComponent<FilterFlagsProps> =
       <FormLabel component="legend">Select Flags to BlackList(optional)</FormLabel>
       {
       flags=='' || flags==null?
-      null
+      <CircularProgress  color="secondary" />
       :
+      flags.hasOwnProperty('flags')?
       flags.flags.map((data:any,index:any)=>(
       <FormControlLabel key={index} control={<Checkbox 
         onChange={captureCheckBoxValue}
@@ -64,6 +66,8 @@ const FilterFlags:React.FunctionComponent<FilterFlagsProps> =
         data-testid="filter-flags-checkbox"
         name={data} />} label={data} />
       ))
+      :
+      <b className="data-failed-fetch" >Failed to fetch data</b>
         }
     </FormControl>
     </div>

@@ -21,3 +21,6 @@
 .validator-error{
     @extend %validator-error;
 }
+.data-failed-fetch{
+    color:$secondary-color;
+}

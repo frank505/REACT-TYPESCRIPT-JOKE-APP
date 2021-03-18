@@ -7,6 +7,8 @@ import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import {FormLabel} from '@material-ui/core';
 import LanguageProps from '../../interfaces/pages/filterjokes/LanguageProps'
+import { alertNotification } from '../../Utilities/HelperFunc';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -30,13 +32,18 @@ const Languages: React.FunctionComponent<LanguageProps> = ({
   formValidatorProps
 }:LanguageProps) => {
   const classes = useStyles();
-  const [languages, setLanguages] = useState<string | number>('');
   const [open, setOpen] = useState(false);
 
   console.log(language);
 
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setLanguages(event.target.value as string);
+  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => 
+  {
+    if(event.target.value!=language.defaultLanguage)
+    {
+      return alertNotification('Language Selection Information',
+      'Error you selected a language that is not English','info');
+    }
+    
     setFilterValues({...filterValues, language: event.target.value});
   };
 
@@ -54,11 +61,12 @@ const Languages: React.FunctionComponent<LanguageProps> = ({
  
       {
         language=='' || language==null?
-        null
+        <CircularProgress  color="secondary" />
         :
+        language.hasOwnProperty('defaultLanguage') ?
        <>
        <FormLabel component="legend"  className={classes.button} 
-        onClick={handleOpen}>Select A Language</FormLabel>
+        onClick={handleOpen}>Select A Language(Please note English only is allowed)(required)</FormLabel>
       
       <FormControl className={classes.formControl}>
         <InputLabel 
@@ -72,18 +80,30 @@ const Languages: React.FunctionComponent<LanguageProps> = ({
           open={open}
           onClose={handleClose}
           onOpen={handleOpen}
-          value={languages}
+          value={filterValues.language}
           onChange={handleChange}
         >
+          {
+            language.possibleLanguages.map((data:any,index:number)=>(
+              <MenuItem value={data.code}
+              key={index}
+              >
+                {data.code+" "+data.name}
+                </MenuItem>
+            ))
+          }
           
-          <MenuItem value={language.defaultLanguage}>{language.defaultLanguage+" English"}</MenuItem>
           
         </Select>
       </FormControl>
-       </>
+       </> 
+       :
+       <b className="data-failed-fetch" >Failed to fetch data</b>
       }
         
-     
+        <div className="validator-error">
+        {formValidatorProps != '' ? formValidatorProps.language:''}   
+       </div> 
 
     </div>
   );

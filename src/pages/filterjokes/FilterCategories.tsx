@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import 
 {
 Radio,
@@ -9,7 +9,7 @@ FormLabel,
 Checkbox
 } from '@material-ui/core';
 import FilterCategoriesProps from '../../interfaces/pages/filterjokes/FilterCategoriesProps'
-
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 
 
@@ -25,14 +25,17 @@ import FilterCategoriesProps from '../../interfaces/pages/filterjokes/FilterCate
    
    console.log(formValidatorProps);
 
-    const [value, setValue] = useState<string>('Any');
+
+
+
+
 
     const handleChange = (event:React.ChangeEvent<HTMLInputElement>):any => 
     {
-      setValue(event.target.value);
+      
       setFilterValues({ ...filterValues, category:event.target.value, selectedCategory:[]});
     };
-
+ 
     const captureCheckBoxValue = (event:React.ChangeEvent<HTMLInputElement>):any =>
     {
 
@@ -65,10 +68,10 @@ import FilterCategoriesProps from '../../interfaces/pages/filterjokes/FilterCate
         <div>  
          <div>
          <FormControl component="fieldset">
-      <FormLabel component="legend">Select A Category</FormLabel>
+      <FormLabel component="legend">Select A Category(required)</FormLabel>
       <RadioGroup aria-label="gender"
       className="custom-radio-styles custom-radio-test"
-      name="gender1" value={value}
+      name="gender1" value={filterValues.category}
       data-testid="radio-group-controllers"
       onChange={handleChange}
       >
@@ -81,23 +84,27 @@ import FilterCategoriesProps from '../../interfaces/pages/filterjokes/FilterCate
     </FormControl>
       </div>
       {
-          value!='Any'?
+          filterValues.category!='Any'?
           categories=='' || categories == null?
-          null
+          <CircularProgress  color="secondary" />
           : 
-          categories.categories.map((data:any,index:number|string)=>(
-            <FormControlLabel
-            key={index}
-            control={<Checkbox name={data}
-            data-testid="check-user" 
-            onChange={captureCheckBoxValue}
-            value={data}
-            />} label={data} />
-          ))
+          categories.hasOwnProperty('categories')?
          
+            categories.categories.map((data:any,index:number|string)=>(
+              <FormControlLabel
+              key={index}
+              control={<Checkbox name={data}
+              data-testid="check-user" 
+              onChange={captureCheckBoxValue}
+              value={data}
+              />} label={data} />
+            ))
+          :
+          <b className="data-failed-fetch" >Failed to fetch data</b>
           :
           null
-      } 
+        }
+
         <div className="validator-error">
         {formValidatorProps != '' ? formValidatorProps.category:''}   
        </div> 
