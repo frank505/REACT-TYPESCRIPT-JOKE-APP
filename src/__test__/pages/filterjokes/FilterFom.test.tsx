@@ -22,7 +22,8 @@ function renderFilterForm(props: Partial<FilterFormProps> = {}) {
     filterValues:{},
     setFilterValues(){
       
-    }
+    },
+    formValidatorProps:{}
    }
    return render(<FilterForm {...defaultProps} {...props} />);
   }

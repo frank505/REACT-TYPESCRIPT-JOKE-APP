@@ -6,7 +6,7 @@ import './styles.scss';
 
 
 const CustomButton: React.FunctionComponent<ButtonProps> = 
-     ({buttonText,clickEvent,color,variant,customStyles,className}:any) => {
+     ({buttonText,clickEvent,color,variant,customStyles,className,type}:any) => {
 
     return (
        <Button className={`home-page-button ${className}`} 
@@ -14,7 +14,7 @@ const CustomButton: React.FunctionComponent<ButtonProps> =
         color={color} 
         variant={variant}
         style={customStyles}
-        
+         type={type}
         data-testid="custom-button"
         >
                 {buttonText}

@@ -26,7 +26,8 @@ const useStyles = makeStyles((theme: Theme) =>
 const Languages: React.FunctionComponent<LanguageProps> = ({
   language,
   filterValues,
-  setFilterValues
+  setFilterValues,
+  formValidatorProps
 }:LanguageProps) => {
   const classes = useStyles();
   const [languages, setLanguages] = useState<string | number>('');

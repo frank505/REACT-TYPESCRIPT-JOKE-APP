@@ -8,9 +8,13 @@ import FilterForm  from './FilterForm';
 import CustomButton from '../../components/Buttons/Buttons';
 import {getCategoriesService, getFlagsService,getLanguagesServices} 
 from '../../services/jokes/JokesService'
+import { alertNotification } from '../../Utilities/HelperFunc';
 
-const FilterJokes: React.FunctionComponent  = () => {
 
+const FilterJokes: React.FunctionComponent  = () => 
+{
+
+  
   const [categories,setCategories] = useState<string|object>('');
   const [flags,setFlags] = useState<any>('');
   const [language,setLanguage] = useState<any>('');
@@ -22,6 +26,9 @@ const FilterJokes: React.FunctionComponent  = () => {
    jokeType:[],
    flags:[]
   });
+
+  const [formValidatorProps,setFormValidatorProps] = useState('');
+
 
   useEffect(() => {
 
@@ -74,6 +81,17 @@ const FilterJokes: React.FunctionComponent  = () => {
   }
 
 
+  const validation = () =>
+  {
+    const errors:any = {};
+    errors.category = filterValues.category=='Custom' && filterValues.selectedCategory.length==0?
+    'Select a custom category':'';
+    errors.language = filterValues.language==''?'Language Type Must be selected':'';
+    errors.jokeType =  filterValues.jokeType.length==0?'Please Select at least one joke type':'';
+     setFormValidatorProps(errors);
+     return errors;
+  }
+
     const clearFilterForm = () =>
     {
 
@@ -81,12 +99,15 @@ const FilterJokes: React.FunctionComponent  = () => {
 
     const submitQueryData = () =>
     {
-      console.log(filterValues);
+      let err = validation();
+      
     }
 
     return (
         <div data-testid="filter-jokes-test-id">
-            <CustomCards
+
+          
+               <CustomCards
             className="style-card-elem"
               contentElements={
                   <div>
@@ -95,10 +116,15 @@ const FilterJokes: React.FunctionComponent  = () => {
                    variant="h5"
                    className={"custom-styles-filter-jokes-header"}
                   />
+                
+
+
+                 
                  <FilterForm  
                  categories={categories} 
                  filterValues={filterValues}
                  setFilterValues={setFilterValues}
+                 formValidatorProps={formValidatorProps}
                  flags={flags}
                  language={language}
                  />
@@ -117,11 +143,17 @@ const FilterJokes: React.FunctionComponent  = () => {
                 variant="contained"
                 className="pad-btn-jokes-elem"
                 />
+           
+
+          
 
                   </div>
               }
            
             />
+
+  
+
         </div>
     );
 }

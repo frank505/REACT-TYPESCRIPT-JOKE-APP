@@ -20,7 +20,8 @@ function renderFilterTypes(props: Partial<FilterTypesProps> = {})
         flags:[] 
 
     },
-    setFilterValues:jest.fn()
+    setFilterValues:jest.fn(),
+    formValidatorProps:{}
  }; 
 
   return render(<FilterTypes {...defaultProps} {...props}/>);

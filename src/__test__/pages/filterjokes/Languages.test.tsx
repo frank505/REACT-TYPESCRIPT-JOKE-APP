@@ -14,7 +14,8 @@ function renderLanguage(props: Partial<LanguageProps> = {}) {
        language: language
    },
    filterValues:{},
-   setFilterValues:filterFunc
+   setFilterValues:filterFunc,
+   formValidatorProps:{}
   };
   return render(<Languages {...defaultProps} {...props} />);
 }

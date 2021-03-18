@@ -18,10 +18,13 @@ import FilterCategoriesProps from '../../interfaces/pages/filterjokes/FilterCate
    {
      categories, 
      filterValues,
-     setFilterValues
+     setFilterValues,
+     formValidatorProps
     }:FilterCategoriesProps) => 
 {
    
+   console.log(formValidatorProps);
+
     const [value, setValue] = useState<string>('Any');
 
     const handleChange = (event:React.ChangeEvent<HTMLInputElement>):any => 
@@ -67,7 +70,8 @@ import FilterCategoriesProps from '../../interfaces/pages/filterjokes/FilterCate
       className="custom-radio-styles custom-radio-test"
       name="gender1" value={value}
       data-testid="radio-group-controllers"
-      onChange={handleChange}>
+      onChange={handleChange}
+      >
         <FormControlLabel value="Any"
         control={<Radio />} label="Any" />
         <FormControlLabel value="Custom" control={<Radio />} 
@@ -93,8 +97,10 @@ import FilterCategoriesProps from '../../interfaces/pages/filterjokes/FilterCate
          
           :
           null
-      }
-         
+      } 
+        <div className="validator-error">
+        {formValidatorProps != '' ? formValidatorProps.category:''}   
+       </div> 
       </div>
     );
 }

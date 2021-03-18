@@ -14,7 +14,8 @@ import FilterTypesProps from '../../interfaces/pages/filterjokes/FilterTypesProp
 const FilterTypes:React.FunctionComponent<FilterTypesProps> = (
                                    {
                                     filterValues,
-                                    setFilterValues
+                                    setFilterValues,
+                                    formValidatorProps
                                    }:FilterTypesProps) =>
 {
 

@@ -16,30 +16,45 @@ const FilterForm:React.FunctionComponent<FilterFormProps> = (
     flags,
     language,
     filterValues,
-    setFilterValues
+    setFilterValues,
+    formValidatorProps
   }:FilterFormProps) =>
 {
  
-  console.log(flags);
+  console.log(flags);  
     console.log(language);
 
     return(
     <>
     <div>
-    <FilterCategories categories={categories} filterValues={filterValues}
-    setFilterValues={setFilterValues}
+    <FilterCategories 
+     categories={categories} 
+     filterValues={filterValues}
+     setFilterValues={setFilterValues}
+      formValidatorProps={formValidatorProps}   
     />
     </div> 
     <div>
-      <Languages language={language}  filterValues={filterValues} 
-      setFilterValues={setFilterValues}/>
+      <Languages 
+      language={language}  
+      filterValues={filterValues} 
+      setFilterValues={setFilterValues}
+      formValidatorProps={formValidatorProps}   
+      />
     </div> 
     <div>
-      <FilterTypes filterValues={filterValues} setFilterValues={setFilterValues}  /> 
+      <FilterTypes 
+      filterValues={filterValues} 
+      setFilterValues={setFilterValues} 
+      formValidatorProps={formValidatorProps}   
+      /> 
     </div>
     <div>
-      <FilterFlags flags={flags}  filterValues={filterValues} 
-      setFilterValues={setFilterValues}/>
+      <FilterFlags 
+      flags={flags}  
+      filterValues={filterValues} 
+      setFilterValues={setFilterValues} 
+      formValidatorProps={formValidatorProps} />
     </div>
   
     </>

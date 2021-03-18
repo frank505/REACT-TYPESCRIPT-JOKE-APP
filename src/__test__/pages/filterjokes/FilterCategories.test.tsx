@@ -24,7 +24,8 @@ const defaultProps: FilterCategoriesProps=
         jokeType:[],
         flags:[]
     },
-    setFilterValues:filterFunc
+    setFilterValues:filterFunc,
+    formValidatorProps:{}
  }; 
  
  

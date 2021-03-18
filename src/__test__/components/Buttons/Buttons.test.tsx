@@ -13,7 +13,8 @@ const defaultProps: ButtonProps= {
   color : "primary",
   variant :"contained",
   customStyles : {}, 
-  className:""
+  className:"",
+  type:"submit"
 
 }; 
 

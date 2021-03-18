@@ -4,4 +4,5 @@ export default interface FilterFormProps {
     language:any;
     filterValues:any;
     setFilterValues:any;
+    formValidatorProps:any;
   }

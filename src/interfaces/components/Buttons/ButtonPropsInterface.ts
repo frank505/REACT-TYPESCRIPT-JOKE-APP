@@ -1,8 +1,9 @@
 export default interface ButtonProps {
     buttonText ?: string;
-    clickEvent :()=> void;
+    clickEvent ?:()=> void;
     color?: string;
     variant?:any;
     customStyles ?:any;
     className?:any;
+    type?:any;
 }

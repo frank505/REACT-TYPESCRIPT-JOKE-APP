@@ -15,7 +15,8 @@ const FilterFlags:React.FunctionComponent<FilterFlagsProps> =
 ({
     flags,
     filterValues,
-    setFilterValues
+    setFilterValues,
+    formValidatorProps
 }
     :FilterFlagsProps) =>
 {
