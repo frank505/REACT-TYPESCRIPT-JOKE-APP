@@ -38,6 +38,18 @@ export const getLanguagesServices = ():any =>
 }
 
 
+export const getJokesService = (getUrl:string):any =>
+{
+  let addedUrl:string = "joke/"+getUrl;
+   return getData(addedUrl).then((data:any)=>{
+   return data; 
+   }).catch((error:any)=>
+   {
+    return error;
+   });
+}
+
+
 
 
 
