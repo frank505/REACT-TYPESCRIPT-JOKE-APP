@@ -72,14 +72,21 @@ import CircularProgress from '@material-ui/core/CircularProgress';
       <RadioGroup aria-label="gender"
       className="custom-radio-styles custom-radio-test"
       name="gender1" value={filterValues.category}
-      data-testid="radio-group-controllers"
+      data-testid="show-custom-categories"
       onChange={handleChange}
-      >
-        <FormControlLabel value="Any"
+      > 
+      <FormControlLabel 
+        data-testid="radio-elem-control"
+        value="Any"
         control={<Radio />} label="Any" />
-        <FormControlLabel value="Custom" control={<Radio />} 
-        data-testid="show-custom-categories"
+
+        <FormControlLabel value="Custom"   
+        data-testid="radio-elem-control"
+        control={<Radio />} 
         label="Custom" />
+        
+         
+        
       </RadioGroup>
     </FormControl>
       </div>
@@ -105,7 +112,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
           null
         }
 
-        <div className="validator-error">
+        <div className="validator-error" data-testid="error-form-message-test-id">
         {formValidatorProps != '' ? formValidatorProps.category:''}   
        </div> 
       </div>

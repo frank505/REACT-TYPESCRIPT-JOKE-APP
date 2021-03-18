@@ -1,5 +1,6 @@
 import React,{useState as useStateMock} from "react";
-import { render, fireEvent,screen, getByLabelText, getByText } from "@testing-library/react";
+import { render, fireEvent,screen,
+   getByLabelText, getByText,EventType} from "@testing-library/react";
 import FilterCategoriesProps from "../../../interfaces/pages/filterjokes/FilterCategoriesProps";
 import FilterCategories from "../../../pages/filterjokes/FilterCategories";
 import * as filterCategories from '../../../mocks/pages/filterjokes/FilterCategories.json';
@@ -42,22 +43,31 @@ describe("<FilterCategories />", () => {
  test("render component" , ()=>{
  renderFilterCategories();
  }) ; 
-    
+     
  test("radio group has been changed", async()=>{
 
     const {getAllByTestId} = renderFilterCategories();
-    let customCategories = await getAllByTestId('show-custom-categories');
-    customCategories.forEach((elem:any,index:number)=>{
-        let currInputElem = elem.querySelector('[aria-disabled="false"]');
-        if(!currInputElem.classList.contains('Mui-checked'))
-        {
-          fireEvent.click(currInputElem);
-          expect(currInputElem.classList.contains('Mui-checked')).toBe(true);
-        }
-    });
+    let customCategories = await getAllByTestId('radio-elem-control');
+    customCategories.forEach((currInputElem:any,index:number)=>
+     {
+      let radioBtnValue = currInputElem.querySelector('[aria-disabled="false"]').querySelector('input');
+      let spanIsCheckedElem = currInputElem.querySelector('[aria-disabled="false"]');
+      console.debug(radioBtnValue.value);
+      
+      if(radioBtnValue.value=='Custom')
+      {
+        expect(spanIsCheckedElem.classList.contains('Mui-checked')).toBe(false);
+        fireEvent.change(radioBtnValue); 
+        expect(spanIsCheckedElem.classList.contains('Mui-checked')).toBe(true);
+      }else if(radioBtnValue.value=="Any")
+      {
+        expect(spanIsCheckedElem.classList.contains('Mui-checked')).toBe(true);
+      }
+        
+    }); 
  });
 
-
+  
  test('check box is checked',async()=>{
   
     const {getAllByTestId} = renderFilterCategories();

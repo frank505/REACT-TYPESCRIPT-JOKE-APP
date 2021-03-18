@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, withRouter,RouteComponentProps } from 'react-router-dom';
 
-const RandomJokes: React.FunctionComponent<RouteComponentProps<any>>  = () => {
+const RandomJokes: React.FunctionComponent = () => {
     
     const [message, setMessage] = useState<string>('this is the jokes page');
 
@@ -15,4 +15,4 @@ const RandomJokes: React.FunctionComponent<RouteComponentProps<any>>  = () => {
     );
 }
 
-export default withRouter(RandomJokes);
+export default RandomJokes;

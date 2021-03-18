@@ -9,6 +9,7 @@ import CustomButton from '../../components/Buttons/Buttons';
 import {getCategoriesService, getFlagsService,getLanguagesServices} 
 from '../../services/jokes/JokesService'
 import { alertNotification } from '../../Utilities/HelperFunc';
+import {baseUrl} from '../../services/HttpService'
 
 
 const FilterJokes: React.FunctionComponent  = () => 
@@ -102,7 +103,8 @@ const FilterJokes: React.FunctionComponent  = () =>
       {
        return alertNotification('Form Validation','One or more fields have not been entered','error');
       }
-       console.log(arrangeUrl(filterValues));
+       let addedUrl = arrangeUrl(filterValues);
+       history.push(`/random-jokes/${addedUrl}`);
     }
 
    const constructUrlFromLoop = (data:any,lengthElem:number):any =>
@@ -199,15 +201,17 @@ const FilterJokes: React.FunctionComponent  = () =>
                  flags={flags}
                  language={language}
                  />
-                  
+                 
+                  <div data-testid="custom-button-submit"
+                  onClick={submitQueryData}
+                  >
                  <CustomButton 
                 color="primary" 
                 buttonText="Submit" 
-                clickEvent={submitQueryData}
                 variant="contained"
                 className="pad-btn-jokes-elem"
                 />
-               
+                </div>
            
 
           

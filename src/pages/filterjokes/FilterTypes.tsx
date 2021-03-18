@@ -69,7 +69,7 @@ const FilterTypes:React.FunctionComponent<FilterTypesProps> = (
    />} label="Two Part" />
       </FormControl>
 
-      <div className="validator-error">
+      <div className="validator-error" data-testid="error-form-message-test-id">
         {formValidatorProps != '' ? formValidatorProps.jokeType:''}   
        </div> 
 

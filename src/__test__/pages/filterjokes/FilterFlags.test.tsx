@@ -5,7 +5,6 @@ import FilterFlags from "../../../pages/filterjokes/FilterFlags";
 import * as flags from '../../../mocks/pages/filterjokes/FilterFlags.json'
 
 
-console.log(typeof flags);
 
 const parseJson:any = flags;
 
@@ -22,7 +21,8 @@ function renderFilterFlags(props: Partial<FilterFlagsProps> = {}) {
         flags:[]  
         
     },
-   setFilterValues: jest.fn()
+   setFilterValues: jest.fn(),
+   formValidatorProps:{}
   };
   return render(<FilterFlags {...defaultProps} {...props} />);
 }
@@ -49,6 +49,8 @@ describe("<FilterFlags />", () => {
            expect(element.classList.contains('Mui-checked')).toBe(true);
          });
        })
+
+       
  
 
    

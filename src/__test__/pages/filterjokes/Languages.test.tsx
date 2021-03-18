@@ -5,14 +5,12 @@ import * as language from '../../../mocks/pages/filterjokes/Languages.json'
 import LanguageProps from "../../../interfaces/pages/filterjokes/LanguageProps";
 
 
-
+ 
 const filterFunc = jest.fn();
 
 function renderLanguage(props: Partial<LanguageProps> = {}) {
   const defaultProps: LanguageProps= {
-   language:{
-       language: language
-   },
+    language: language,
    filterValues:{},
    setFilterValues:filterFunc,
    formValidatorProps:{}

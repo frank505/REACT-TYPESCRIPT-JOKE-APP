@@ -3,6 +3,14 @@ import { render, fireEvent, waitForElement, waitFor } from "@testing-library/rea
 import FilterJokes from "../../../pages/filterjokes";
 
 
+const mockHistoryPush = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom') as any,
+  useHistory: () => ({
+    push: mockHistoryPush,
+  }),
+}));
 
 function renderFilterJokes() {
  
@@ -27,7 +35,7 @@ describe("<FilterForm />", () => {
         renderFilterJokes();  
        });
 
-  test('mock number of api calls',async()=>{
+  test('mock api calls for filterjokes component',async()=>{
     const fakeResponse = { apiResponse:  'response data'};
     const mRes = { json: jest.fn().mockResolvedValueOnce(fakeResponse) };
     const mockedFetch = jest.fn().mockResolvedValueOnce(mRes as any);
@@ -38,6 +46,40 @@ describe("<FilterForm />", () => {
     expect(mRes.json).toBeCalledTimes(1);  
 
   });
+
+        
+
+  test("form is submited test", async()=>{
+    const {findByTestId,getAllByTestId} =  renderFilterJokes(); 
+    const submitBtn = await findByTestId('custom-button-submit'); 
+    const errorElemResponseLoop:any = await getAllByTestId("error-form-message-test-id");
+    fireEvent.click(submitBtn);
+    let errorCount = 0;
+    errorElemResponseLoop.forEach((element:HTMLElement,index:number)=>
+    {
+      
+      let elemInnerHtml = element.innerHTML;
+      if(elemInnerHtml!='')
+      {
+        /**
+         * check if there are any error messages
+         */
+        errorCount++;
+      }
+      
+    });
+    /**
+     * if there is no error message
+     */
+    if(errorCount==0)
+    {
+      expect(mockHistoryPush).toHaveBeenCalledTimes(1);
+    }
+
+  });
+
+
+ 
 
   });
 

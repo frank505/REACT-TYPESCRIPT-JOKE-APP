@@ -25,7 +25,7 @@ const routes: IRoute[] = [
         exact: true
     },
     {
-        path: '/random-jokes',
+        path: '/random-jokes/:category',
         name: 'Random Jokes',
         component: RandomJokes,
         exact: true

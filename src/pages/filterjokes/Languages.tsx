@@ -34,7 +34,6 @@ const Languages: React.FunctionComponent<LanguageProps> = ({
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
-  console.log(language);
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => 
   {
@@ -59,7 +58,7 @@ const Languages: React.FunctionComponent<LanguageProps> = ({
 
     <div data-testid="filter-language-test-root-elem">
  
-      {
+      { 
         language=='' || language==null?
         <CircularProgress  color="secondary" />
         :
@@ -92,7 +91,7 @@ const Languages: React.FunctionComponent<LanguageProps> = ({
                 </MenuItem>
             ))
           }
-          
+           
           
         </Select>
       </FormControl>
@@ -101,7 +100,7 @@ const Languages: React.FunctionComponent<LanguageProps> = ({
        <b className="data-failed-fetch" >Failed to fetch data</b>
       }
         
-        <div className="validator-error">
+        <div className="validator-error" data-testid="error-form-message-test-id">
         {formValidatorProps != '' ? formValidatorProps.language:''}   
        </div> 
 
