@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Link, withRouter,RouteComponentProps, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import CustomCards from '../../components/Cards/CustomCard'
 import CustomHeader from '../../components/Header/Header';
-import CudtomButton from '../../components/Buttons/Buttons'
 import './styles.scss'
 import FilterForm  from './FilterForm';
 import CustomButton from '../../components/Buttons/Buttons';
 import {getCategoriesService, getFlagsService,getLanguagesServices} 
 from '../../services/jokes/JokesService'
 import { alertNotification } from '../../Utilities/HelperFunc';
-import {baseUrl} from '../../services/HttpService'
+
 
 
 const FilterJokes: React.FunctionComponent  = () => 
@@ -177,7 +176,7 @@ const FilterJokes: React.FunctionComponent  = () =>
   }
 
     return (
-        <div data-testid="filter-jokes-test-id">
+        <div data-testid="filter-jokes-test-id" id="parent-div-filter-jokes">
 
           
                <CustomCards
@@ -188,7 +187,7 @@ const FilterJokes: React.FunctionComponent  = () =>
                    headerText="Filter Jokes"
                    variant="h5"
                    className={"custom-styles-filter-jokes-header"}
-                  />
+                  /> 
                 
 
 

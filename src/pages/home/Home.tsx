@@ -17,7 +17,8 @@ const Home: React.FunctionComponent  = () => {
    }
 
     return (
-        <div className="home-page-parent-div">
+        <div id="parent-div-home">
+        <div className="home-page-parent-div" >
             <CustomHeader
              headerText="Welcome to Jokes App Click the button Below to Continue"
              variant="h5"
@@ -30,6 +31,7 @@ const Home: React.FunctionComponent  = () => {
             clickEvent={goToCategoriesPage}
             variant="contained"
             />
+        </div>
         </div>
     );
 }

@@ -29,7 +29,7 @@ describe("<FilterForm />", () => {
       (global as any).fetch = originFetch;
     });
 
- 
+  
 
     test("should render component with properties and parent", async () => {
         renderFilterJokes();  

@@ -1,26 +1,26 @@
 @import '../../_base';
 
-.style-card-elem{
-    width:60%;
-    margin-left:20%;
-    margin-right:20%;
-    margin-top:100px;
-}
-
-.custom-radio-styles{
-    display:inline-block !important;
-}
-.custom-styles-filter-jokes-header{
-    margin-bottom: 20px  !important;
-    border-bottom: 5px solid $secondary-color;
-    text-align: center;
-}
-.pad-btn-jokes-elem{
-    margin:4px !important;
-}
-.validator-error{
-    @extend %validator-error;
-}
-.data-failed-fetch{
-    color:$secondary-color;
+#parent-div-filter-jokes
+{
+    .style-card-elem{
+        @extend %card-custom-styles;
+     }
+     
+     .custom-radio-styles{
+         display:inline-block !important;
+     }
+     .custom-styles-filter-jokes-header{
+         margin-bottom: 20px  !important;
+         border-bottom: 5px solid $secondary-color;
+         text-align: center;
+     }
+     .pad-btn-jokes-elem{
+         margin:4px !important;
+     }
+     .validator-error{
+         @extend %validator-error;
+     }
+     .data-failed-fetch{
+         color:$secondary-color;
+     }
 }
