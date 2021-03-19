@@ -10,9 +10,36 @@ const BothJokes: React.FunctionComponent<JokesDataProps> = ({
   
 
     return (
-        <div id="elem-content">
-        both jokes
-        </div>
+
+        <div>
+              
+        <div className="header-jokes">Joke</div>
+
+        <div className="header-setup-delivery">Single Joke</div>
+              <div 
+    className="element-styles"
+    dangerouslySetInnerHTML=
+    {{ __html:  responseData.setup }} 
+    />
+
+
+            <div className="header-setup-delivery">Two Part Joke</div>
+         <div className="header-setup-delivery">SetUp</div>
+        <div 
+    className="element-styles"
+    dangerouslySetInnerHTML=
+    {{ __html:  responseData.setup }} 
+    />
+     <div className="header-setup-delivery">Delivery</div>
+    <div 
+    className="element-styles"
+    dangerouslySetInnerHTML=
+    {{ __html:  responseData.delivery }} 
+    />
+    
+  
+
+    </div>
     );
 }
 
