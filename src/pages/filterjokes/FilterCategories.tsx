@@ -26,16 +26,16 @@ import CircularProgress from '@material-ui/core/CircularProgress';
    console.log(formValidatorProps);
 
 
-
-
-
+   const [isChecked,setIsChecked] = useState<any>("Any");
 
     const handleChange = (event:React.ChangeEvent<HTMLInputElement>):any => 
     {
       
       setFilterValues({ ...filterValues, category:event.target.value, selectedCategory:[]});
+      
     };
  
+  
     const captureCheckBoxValue = (event:React.ChangeEvent<HTMLInputElement>):any =>
     {
 
@@ -62,7 +62,11 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
       }
      
-
+   const changeCheckBox = (event:React.ChangeEvent<HTMLInputElement>):any =>
+   {
+     setIsChecked(event.target.value);
+     
+   }
 
     return (
         <div>  
@@ -78,11 +82,21 @@ import CircularProgress from '@material-ui/core/CircularProgress';
       <FormControlLabel 
         data-testid="radio-elem-control"
         value="Any"
-        control={<Radio />} label="Any" />
+        control={<Radio 
+              checked={isChecked==='Any'}
+              name="checkbox-content"
+              onChange={changeCheckBox}
+           />} label="Any" 
+           
+           />
 
         <FormControlLabel value="Custom"   
         data-testid="radio-elem-control"
-        control={<Radio />} 
+        control={<Radio  
+          checked={isChecked === 'Custom'}
+          onChange={changeCheckBox}
+          name="checkbox-content"
+        />} 
         label="Custom" />
         
          

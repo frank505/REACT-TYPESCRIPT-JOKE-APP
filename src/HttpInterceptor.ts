@@ -1,4 +1,5 @@
 import fetchIntercept from 'fetch-intercept';
+import {alertNotification} from './Utilities/HelperFunc'
 
 
 
@@ -20,12 +21,31 @@ export const HttpInterceptor = () =>
 
     response: function (response) {
       // Modify the reponse object
-      // console.log(response.data);
-      if (response.status == 401) {
+      
+      if (response.status == 404) 
+      {
+        alertNotification("404 Error","Data Not found","error");
         // console.log('ready to redirect j');
-
-    
+      }else if(response.status == 403)
+      {
+        alertNotification('403 Error','this data access is forbidden for you',"error");
+      }else if(response.status==400)
+      {
+        alertNotification('400 Bad Request',"Request sent was not formatted properly","error");
+      }else if(response.status == 413)
+      {
+        alertNotification("413 Error","Payload is too large","error");
+      }else if(response.status== 414)
+      {
+        alertNotification("414 Error","URI is too long","error");
+      }else if(response.status==429)
+      {
+        alertNotification("429 Error","You have exceeded Request limit per minute","error");
+      }else if(response.status==500)
+      {
+        alertNotification("500 Error","Internal Server Error","error");
       }
+
       return response;
     },
 

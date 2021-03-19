@@ -2,7 +2,7 @@ import React, { useState as useStateMock } from 'react';
 import { render, fireEvent,screen } from "@testing-library/react";
 import  Home from '../../../pages/home/Home'
 import { createMemoryHistory } from 'history'
-import { BrowserRouter,Router } from 'react-router-dom'
+
 
 
 const mockHistoryPush = jest.fn();
@@ -50,6 +50,8 @@ describe("<Home />", () => {
     expect(mockHistoryPush).toHaveBeenCalledWith('/filter-jokes');
 
     });
+
+    
 
   });
 

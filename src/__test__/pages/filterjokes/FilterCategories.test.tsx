@@ -4,6 +4,7 @@ import { render, fireEvent,screen,
 import FilterCategoriesProps from "../../../interfaces/pages/filterjokes/FilterCategoriesProps";
 import FilterCategories from "../../../pages/filterjokes/FilterCategories";
 import * as filterCategories from '../../../mocks/pages/filterjokes/FilterCategories.json';
+import userEvent from '@testing-library/user-event'
 
 
 
@@ -48,16 +49,20 @@ describe("<FilterCategories />", () => {
 
     const {getAllByTestId} = renderFilterCategories();
     let customCategories = await getAllByTestId('radio-elem-control');
-    customCategories.forEach((currInputElem:any,index:number)=>
+    customCategories.forEach( (currInputElem:any,index:number)=>
      {
       let radioBtnValue = currInputElem.querySelector('[aria-disabled="false"]').querySelector('input');
       let spanIsCheckedElem = currInputElem.querySelector('[aria-disabled="false"]');
       console.debug(radioBtnValue.value);
       
       if(radioBtnValue.value=='Custom')
-      {
+      { 
+        /**
+         * instead of using the default properties react material ui 
+         * toggles the MUI-CHecked class for checking and unchecking radio buttons and checkboxes
+         */
         expect(spanIsCheckedElem.classList.contains('Mui-checked')).toBe(false);
-        fireEvent.change(radioBtnValue); 
+        fireEvent.click(radioBtnValue); 
         expect(spanIsCheckedElem.classList.contains('Mui-checked')).toBe(true);
       }else if(radioBtnValue.value=="Any")
       {
@@ -75,6 +80,10 @@ describe("<FilterCategories />", () => {
     
      customCategories.forEach((elem:any,index:number)=>{
       let currInputElem = elem.querySelector('[aria-disabled="false"]');
+      /**
+         * instead of using the default properties react material ui 
+         * toggles the MUI-CHecked class for checking and unchecking radio buttons and checkboxes
+         */
       if(currInputElem.classList.contains('Mui-checked'))
       {
           let radioBtnValue = elem.querySelector('input').value;

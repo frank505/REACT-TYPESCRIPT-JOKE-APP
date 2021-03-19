@@ -55,6 +55,11 @@ const FilterJokes: React.FunctionComponent  = () =>
      {
        setCategories(data); 
      }
+     else if(data.error==true)
+     {
+       alertNotification(`${data.code} error`,`${data.message}\n ${data.causedBy}\n ${data.causedBy[0]} `,
+       "error");
+     }
  
     })
   }
@@ -66,6 +71,10 @@ const FilterJokes: React.FunctionComponent  = () =>
        if(data.error==false)
        {
          setFlags(data);
+       }else if(data.error==true)
+       {
+         alertNotification(`${data.code} error`,`${data.message}\n ${data.causedBy}\n ${data.causedBy[0]} `,
+         "error");
        }
     })
   }
@@ -78,7 +87,7 @@ const FilterJokes: React.FunctionComponent  = () =>
       setLanguage(data);
       
     });
-  }
+  } 
 
 
   const validation = () =>

@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { Link, withRouter,RouteComponentProps } from 'react-router-dom';
+import React from 'react';
 import CustomButton from '../../components/Buttons/Buttons';
 import CustomHeader from '../../components/Header/Header';
 import './styles.scss';

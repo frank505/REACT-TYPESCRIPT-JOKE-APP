@@ -41,7 +41,7 @@ describe("<FilterForm />", () => {
     const mockedFetch = jest.fn().mockResolvedValueOnce(mRes as any);
     (global as any).fetch = mockedFetch;
     const { getByTestId } = renderFilterJokes();
-    const div = await waitFor(()=>  getByTestId('filter-jokes-test-id'));
+     await waitFor(()=>  getByTestId('filter-jokes-test-id'));
     expect(mockedFetch).toBeCalledTimes(3);
     expect(mRes.json).toBeCalledTimes(1);  
 

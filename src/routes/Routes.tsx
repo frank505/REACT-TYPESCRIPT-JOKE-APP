@@ -14,7 +14,7 @@ const Routes = () => {
                         key={index}
                         path={route.path}
                         exact={route.exact}
-                        render={(props: RouteComponentProps<any>) => (
+                        render={(props) => (
                             <route.component
                                 name={route.name} 
                                 {...props}
