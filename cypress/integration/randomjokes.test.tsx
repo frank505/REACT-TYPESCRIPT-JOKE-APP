@@ -19,6 +19,15 @@ context('Actions', () => {
     cy.location('pathname').should('include', '/'); 
   })
 
+  it("should go back to home page", ()=>{
+    cy.get('[data-testid="go-back-to-home-page"]').click();
+    cy.location('pathname').should('include', '/'); 
+  });
+
+  it("should go back to filter page",()=>{
+    cy.get('[data-testid="go-back-to-filter-page"]').click();
+    cy.location('pathname').should('include', '/'); 
+  });  
   
 
 

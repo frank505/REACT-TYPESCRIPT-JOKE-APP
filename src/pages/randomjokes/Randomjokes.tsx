@@ -89,6 +89,12 @@ const RandomJokes: React.FunctionComponent<RandomJokesProps & RouteComponentProp
          
       });
     }
+
+
+    const goBackToJokesFilterPage = ():any =>
+    {
+      history.push("/filter-jokes");
+    }
    
 
   
@@ -132,6 +138,17 @@ const RandomJokes: React.FunctionComponent<RandomJokesProps & RouteComponentProp
             color="primary" 
             buttonText="Go Back To Home Page" 
             variant="contained"
+            className="full-width-btn"
+            />
+                 </div>
+
+                 <div  className="go-back-to-home"
+                  data-testid="go-back-to-filter-page" onClick={goBackToJokesFilterPage}>
+                 <CustomButton
+            color="primary" 
+            buttonText="Go Back To Jokes Filter Page" 
+            variant="contained"
+            className="full-width-btn"
             />
                  </div>
                

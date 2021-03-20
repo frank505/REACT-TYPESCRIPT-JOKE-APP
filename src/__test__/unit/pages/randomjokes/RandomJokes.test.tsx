@@ -60,7 +60,7 @@ describe("<RandomJokes />", () => {
           
        });
 
-       test("click button to go back", async()=>
+       test("click button to go back to homepage", async()=>
        {
         const mRes = { json: jest.fn().mockResolvedValueOnce(RandomDataJokes ) };
         const mockedFetch = jest.fn().mockResolvedValueOnce(mRes as any);
@@ -73,6 +73,19 @@ describe("<RandomJokes />", () => {
          expect(mockHistoryPush).toHaveBeenLastCalledWith('/');
        });
 
+     
+       test("click button back to filter jokes page",async()=>{
+        const mRes = { json: jest.fn().mockResolvedValueOnce(RandomDataJokes ) };
+        const mockedFetch = jest.fn().mockResolvedValueOnce(mRes as any);
+        (global as any).fetch = mockedFetch;
+        console.debug(mockedFetch);
+          const {findByTestId} = renderWithRouter(<RandomJokes {...defaultProps}/>);
+          const elem = await waitFor(()=>findByTestId("go-back-to-filter-page"));
+          fireEvent.click(elem);
+         expect(mockHistoryPush).toHaveBeenCalledTimes(1);
+         expect(mockHistoryPush).toHaveBeenLastCalledWith('/filter-jokes');
+       
+       });
     
   });
 
