@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent, waitForElement, waitFor } from "@testing-library/react";
-import FilterJokes from "../../../pages/filterjokes";
+import FilterJokes from "../../../../pages/filterjokes";
 
 
 const mockHistoryPush = jest.fn();

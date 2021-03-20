@@ -1,10 +1,10 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import FilterFormProps from "../../../interfaces/pages/filterjokes/FilterFormProps";
-import * as flags from '../../../mocks/pages/filterjokes/FilterFlags.json'
-import * as categories from '../../../mocks/pages/filterjokes/FilterCategories.json'
-import * as languages from '../../../mocks/pages/filterjokes/Languages.json';
-import FilterForm from "../../../pages/filterjokes/FilterForm";
+import FilterFormProps from "../../../../interfaces/pages/filterjokes/FilterFormProps";
+import * as flags from '../../../../mocks/pages/filterjokes/FilterFlags.json'
+import * as categories from '../../../../mocks/pages/filterjokes/FilterCategories.json'
+import * as languages from '../../../../mocks/pages/filterjokes/Languages.json';
+import FilterForm from "../../../../pages/filterjokes/FilterForm";
 
 
 

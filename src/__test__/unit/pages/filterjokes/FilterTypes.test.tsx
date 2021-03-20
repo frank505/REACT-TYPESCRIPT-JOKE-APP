@@ -1,7 +1,7 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import FilterTypes from "../../../pages/filterjokes/FilterTypes";
-import FilterTypesProps from '../../../interfaces/pages/filterjokes/FilterTypesProps';
+import FilterTypes from "../../../../pages/filterjokes/FilterTypes";
+import FilterTypesProps from '../../../../interfaces/pages/filterjokes/FilterTypesProps';
 
 
 

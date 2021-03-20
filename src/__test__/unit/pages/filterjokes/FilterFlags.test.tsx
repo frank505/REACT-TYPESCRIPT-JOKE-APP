@@ -1,8 +1,8 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import FilterFlagsProps from "../../../interfaces/pages/filterjokes/FilterFlagsProps";
-import FilterFlags from "../../../pages/filterjokes/FilterFlags";
-import * as flags from '../../../mocks/pages/filterjokes/FilterFlags.json'
+import FilterFlagsProps from "../../../../interfaces/pages/filterjokes/FilterFlagsProps";
+import FilterFlags from "../../../../pages/filterjokes/FilterFlags";
+import * as flags from '../../../../mocks/pages/filterjokes/FilterFlags.json'
 
 
 

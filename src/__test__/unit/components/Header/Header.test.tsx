@@ -1,7 +1,7 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
- import HeaderProps from '../../../interfaces/components/Header/HeaderPropsInterface'
-import CustomHeader from '../../../components/Header/Header'
+ import HeaderProps from '../../../../interfaces/components/Header/HeaderPropsInterface'
+import CustomHeader from '../../../../components/Header/Header'
 
 
 function renderCustomHeader(props: Partial<HeaderProps> = {}) {

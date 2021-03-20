@@ -1,9 +1,9 @@
 import React,{useState as useStateMock} from "react";
 import { render, fireEvent,screen,
    getByLabelText, getByText,EventType} from "@testing-library/react";
-import FilterCategoriesProps from "../../../interfaces/pages/filterjokes/FilterCategoriesProps";
-import FilterCategories from "../../../pages/filterjokes/FilterCategories";
-import * as filterCategories from '../../../mocks/pages/filterjokes/FilterCategories.json';
+import FilterCategoriesProps from "../../../../interfaces/pages/filterjokes/FilterCategoriesProps";
+import FilterCategories from "../../../../pages/filterjokes/FilterCategories";
+import * as filterCategories from '../../../../mocks/pages/filterjokes/FilterCategories.json';
 import userEvent from '@testing-library/user-event'
 
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
- import ButtonProps from '../../../interfaces/components/Buttons/ButtonPropsInterface'
-import  HomePageButton from '../../../components/Buttons/Buttons'
+ import ButtonProps from '../../../../interfaces/components/Buttons/ButtonPropsInterface'
+import  HomePageButton from '../../../../components/Buttons/Buttons'
 
 
 const defaultProps: ButtonProps= {

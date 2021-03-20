@@ -1,12 +1,12 @@
 import React from "react";
 import { render, fireEvent,waitFor,act, findByTestId,screen} from "@testing-library/react";
 import userEvent from '@testing-library/user-event'
-import RandomJokes from "../../../pages/randomjokes";
-import RandomJokesProps from '../../../interfaces/pages/randomjokes/RandomJokesProps' 
+import RandomJokes from "../../../../pages/randomjokes";
+import RandomJokesProps from '../../../../interfaces/pages/randomjokes/RandomJokesProps' 
 import {Router,Route,BrowserRouter} from 'react-router-dom';
 import { createMemoryHistory } from "history";
-import * as RandomDataJokes from '../../../mocks/pages/randomjokes/GetJokes.json'
-import * as DataService from  '../../../services/jokes/JokesService'
+import * as RandomDataJokes from '../../../../mocks/pages/randomjokes/GetJokes.json'
+import * as DataService from  '../../../../services/jokes/JokesService'
 
 
 

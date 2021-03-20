@@ -1,8 +1,8 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import Languages from "../../../pages/filterjokes/Languages";
-import * as language from '../../../mocks/pages/filterjokes/Languages.json'
-import LanguageProps from "../../../interfaces/pages/filterjokes/LanguageProps";
+import Languages from "../../../../pages/filterjokes/Languages";
+import * as language from '../../../../mocks/pages/filterjokes/Languages.json'
+import LanguageProps from "../../../../interfaces/pages/filterjokes/LanguageProps";
 
 
  

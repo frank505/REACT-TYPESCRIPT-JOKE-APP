@@ -1,6 +1,6 @@
 import React, { useState as useStateMock } from 'react';
 import { render, fireEvent,screen } from "@testing-library/react";
-import  Home from '../../../pages/home/Home'
+import  Home from '../../../../pages/home/Home'
 import { createMemoryHistory } from 'history'
 
 
