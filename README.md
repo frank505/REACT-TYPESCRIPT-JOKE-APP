@@ -1,1 +1,1 @@
-An application that renders jokes randomly with options and filters from api( https://v2.jokeapi.dev/) to run unit test simply run command "npm run test" and to run integration tests run command "npx cypress run"
+An application that renders jokes randomly with options and filters from api( https://v2.jokeapi.dev/) to run unit test simply run command "npm run test" and to run integration tests run command "npx cypress run" website url https://sharp-visvesvaraya-7deb85.netlify.app/
